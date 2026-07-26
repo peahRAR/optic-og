@@ -1,0 +1,14 @@
+<!--
+  Placeholder — forme du verre utilisée comme masque dans HeroLens.vue.
+  Ce fichier est une référence visuelle/export : la forme réellement utilisée pour le
+  clip-path est inlinée dans HeroLens.vue (balise <clipPath id="hero-lens-clip">) pour un
+  rendu fiable cross-browser. Si vous changez la forme ici, reportez le même <path d="...">
+  dans HeroLens.vue pour garder les deux en cohérence.
+  Repère : cercle de rayon 100 centré à l'origine (0,0), même convention que le composable.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-110 -110 220 220">
+  <path
+    d="M -100,0 A 100,100 0 1,0 100,0 A 100,100 0 1,0 -100,0 Z"
+    fill="#221714"
+  />
+</svg>
