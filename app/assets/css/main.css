@@ -5,10 +5,29 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    scrollbar-color: #c22c0d #f7f2ec;
   }
 
   body {
     @apply bg-cream text-anthracite font-sans antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f7f2ec;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #c22c0d;
+    border-radius: 9999px;
+    border: 3px solid #f7f2ec;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #9c260c;
   }
 
   h1,
@@ -41,5 +60,36 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Grain colorimétrique unique appliqué à toutes les vraies photos (pas les logos/
+     illustrations) pour qu'elles lisent comme un seul reportage plutôt que des sources
+     disparates. Volontairement discret. */
+  .photo-grade {
+    filter: sepia(0.06) saturate(1.08) contrast(1.04) brightness(1.02);
+  }
+
+  /* Grain discret par-dessus une photo source basse résolution étirée en plein cadre :
+     habille le léger flou d'agrandissement en texture volontaire plutôt qu'en défaut. */
+  .grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+  }
+}
+
+/* Flou initial du hero posé en CSS pur (jamais en style réactif Vue) : s'applique dès le
+   tout premier paint, avant même l'hydratation/le montage de useHeroLens, ce qui évite le
+   flash "net puis flou" (JS n'a pas encore eu la main). Valeur alignée sur `blurFrom` passé
+   à useHeroLens dans HeroLens.vue — à garder synchronisé si cette option change. Une fois
+   monté, useHeroLens reprend la main via `blur.style.filter` (style inline, qui l'emporte
+   sur cette classe) en partant de la même valeur, donc aucune discontinuité visuelle. */
+.hero-blur-initial {
+  filter: blur(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blur-initial {
+    filter: none;
   }
 }

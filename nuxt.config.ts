@@ -20,7 +20,8 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: { lang: 'fr' }
+      htmlAttrs: { lang: 'fr' },
+      link: [{ rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }]
     }
   },
 

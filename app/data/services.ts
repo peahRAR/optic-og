@@ -82,7 +82,7 @@ export const secondPairSteps: SecondPairStep[] = [
     description: "Achetez une monture optique neuve accompagnée d'une paire de verres."
   },
   {
-    icon: 'ph:selection',
+    icon: 'material-symbols:featured-seasonal-and-gifts',
     title: 'Une 2ᵉ monture au choix',
     description: 'Choisissez un modèle parmi une sélection dédiée disponible en magasin.'
   },

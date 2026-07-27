@@ -17,6 +17,8 @@ const props = withDefaults(defineProps<Props>(), {
 const root = ref<HTMLElement | null>(null)
 useMagnetic(root)
 
+const isExternal = computed(() => /^https?:\/\//.test(props.to ?? ''))
+
 const classes =
   props.variant === 'solid'
     ? 'bg-terracotta text-cream hover:bg-terracotta-dark'
@@ -28,6 +30,8 @@ const classes =
     <NuxtLink
       v-if="to"
       :to="to"
+      :target="isExternal ? '_blank' : undefined"
+      :rel="isExternal ? 'noopener noreferrer' : undefined"
       class="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm transition-colors duration-300 ease-editorial"
       :class="classes"
     >

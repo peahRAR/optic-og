@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { navLinks } from '~/data/nav'
 
+const { prefersReducedMotion } = useReducedMotion()
+
 const scrolled = ref(false)
 const mobileOpen = ref(false)
+const logoMark = ref<HTMLElement | null>(null)
 
 function onScroll() {
   scrolled.value = window.scrollY > 24
@@ -11,6 +14,17 @@ function onScroll() {
 onMounted(() => {
   onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
+
+  // Bref instant de marque au tout premier chargement (pas sur les navigations internes
+  // suivantes, ce composant reste monté une fois sur cette page unique).
+  if (!prefersReducedMotion.value && logoMark.value) {
+    const { $gsap } = useNuxtApp()
+    $gsap.fromTo(
+      logoMark.value,
+      { opacity: 0, scale: 0.7 },
+      { opacity: 1, scale: 1, duration: 0.6, delay: 0.15, ease: 'back.out(1.7)' }
+    )
+  }
 })
 
 onUnmounted(() => {
@@ -29,13 +43,15 @@ function closeMobile() {
   >
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6">
       <NuxtLink to="/" class="flex items-center" @click="closeMobile">
-        <NuxtImg
-          src="/img/logo/Logo_Baisieux_2026.png"
-          alt="Optique Ogimont"
-          width="56"
-          height="56"
-          class="h-14 w-14 rounded-xl"
-        />
+        <span ref="logoMark" class="inline-block">
+          <NuxtImg
+            src="/img/logo/Logo_Baisieux_2026.png"
+            alt="Optique Ogimont"
+            width="56"
+            height="56"
+            class="h-14 w-14 rounded-xl"
+          />
+        </span>
       </NuxtLink>
 
       <nav class="hidden items-center gap-9 md:flex" aria-label="Navigation principale">

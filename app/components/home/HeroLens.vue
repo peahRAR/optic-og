@@ -37,9 +37,15 @@ const { showEffect, isSimplified } = useHeroLens(
 
 <template>
   <section ref="section" class="relative h-screen overflow-hidden bg-cream">
-    <!-- Calque réel/accessible — seul contenu lu par les lecteurs d'écran. Pas de style
-         de flou ici : useHeroLens l'applique en JS après montage (voir composable). -->
-    <div ref="blurLayer" class="absolute inset-0 flex items-center" style="will-change: filter">
+    <!-- Calque réel/accessible — seul contenu lu par les lecteurs d'écran. Le flou initial
+         (hero-blur-initial, voir main.css) est posé en CSS pur, jamais en style réactif Vue,
+         pour être présent dès le premier paint ; useHeroLens reprend ensuite la main en JS
+         via un style inline (même valeur de départ, donc aucun flash net -> flou). -->
+    <div
+      ref="blurLayer"
+      class="hero-blur-initial absolute inset-0 flex items-center"
+      style="will-change: filter"
+    >
       <div class="absolute inset-0" aria-hidden="true">
         <NuxtImg
           src="/img/hero/hero-background.jpg"
@@ -48,7 +54,9 @@ const { showEffect, isSimplified } = useHeroLens(
           :height="1000"
           format="webp"
           quality="80"
-          class="h-full w-full object-cover"
+          preload
+          fetchpriority="high"
+          class="photo-grade h-full w-full object-cover"
           style="object-position: 85% 65%"
         />
         <div
@@ -78,7 +86,6 @@ const { showEffect, isSimplified } = useHeroLens(
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-4">
           <MagneticButton to="#boutiques">Prendre rendez-vous</MagneticButton>
-          <MagneticButton to="#expertises" variant="outline">Découvrir</MagneticButton>
         </div>
       </div>
     </div>
@@ -99,7 +106,7 @@ const { showEffect, isSimplified } = useHeroLens(
           :height="1000"
           format="webp"
           quality="80"
-          class="h-full w-full object-cover"
+          class="photo-grade h-full w-full object-cover"
           style="object-position: 85% 65%"
         />
         <div
@@ -131,9 +138,6 @@ const { showEffect, isSimplified } = useHeroLens(
         <div class="mt-10 flex flex-wrap items-center gap-4">
           <span class="inline-flex items-center rounded-full bg-terracotta px-7 py-3.5 text-sm text-cream">
             Prendre rendez-vous
-          </span>
-          <span class="inline-flex items-center rounded-full border border-anthracite/20 px-7 py-3.5 text-sm text-anthracite">
-            Découvrir
           </span>
         </div>
       </div>

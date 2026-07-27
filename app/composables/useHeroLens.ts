@@ -26,8 +26,9 @@ interface HeroLensRefs {
  *   indépendamment du scroll.
  *
  * - Desktop / pointeur fin : pin complet + masque qui grandit + suit la souris.
- * - Mobile / pointeur tactile : repli simplifié, fondu flou -> net sans pin ni masque
- *   (pas de souris sur tactile, donc pas de sens à suivre un curseur).
+ * - Mobile / pointeur tactile : repli simplifié, sans pin ni masque (pas de souris sur
+ *   tactile) et sans scroll requis — un fondu flou -> net joué une fois au chargement,
+ *   pour que le texte devienne lisible tout seul plutôt que de dépendre d'une action.
  * - prefers-reduced-motion : `showEffect` reste à false, rien ne s'anime.
  *
  * Important (SSR) : `showEffect` démarre à `false` et n'est mis à `true` que dans
@@ -76,29 +77,24 @@ export function useHeroLens(refs: HeroLensRefs, options: HeroLensOptions = {}) {
     if (!section || !blur) return
 
     if (isSimplified.value) {
-      // Repli mobile/tactile : simple fondu flou -> net, pas de pin ni de masque
-      // (pas de curseur souris à suivre sur tactile).
+      // Repli mobile/tactile : pas de pin, pas de masque (pas de curseur à suivre sur
+      // tactile), pas de scroll requis (le texte doit être lisible tout seul, sans action
+      // de l'utilisateur) — un simple fondu flou -> net, joué une fois au chargement.
       const state = { blur: blurFrom }
       blur.style.filter = `blur(${state.blur}px)`
-      const tween = $gsap.to(state, {
+      $gsap.to(state, {
         blur: blurTo,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.5
-        },
+        duration: 1.1,
+        delay: 0.15,
+        ease: 'power2.out',
         onUpdate() {
           blur.style.filter = `blur(${state.blur}px)`
         }
       })
-      scrollTrigger = tween.scrollTrigger as import('gsap/ScrollTrigger').ScrollTrigger
       return
     }
 
     const clipPath = refs.clipPath.value
-    const rim = refs.rim?.value
     if (!clipPath) return
 
     const vw = window.innerWidth
@@ -120,11 +116,20 @@ export function useHeroLens(refs: HeroLensRefs, options: HeroLensOptions = {}) {
     function apply() {
       const transform = `translate(${state.x} ${state.y}) scale(${state.scale})`
       clipPath.setAttribute('transform', transform)
-      rim?.setAttribute('transform', transform)
+      // Lu à chaque appel (pas capturé une fois) : au premier appel ci-dessous, le <svg
+      // v-if="showEffect && !isSimplified"> n'existe pas encore (showEffect vient d'être
+      // activé mais Vue n'a pas encore posé le patch DOM dans ce même tick synchrone) —
+      // une capture figée resterait null pour toujours, laissant le reflet s'afficher
+      // sans transform (donc épinglé en haut à gauche, comme une 2e loupe fantôme).
+      refs.rim?.value?.setAttribute('transform', transform)
       blur.style.filter = `blur(${state.blur}px)`
     }
 
     apply()
+    // Vue crée le <g ref="rimEl"> juste après ce tick synchrone (patch réactif de
+    // showEffect) : on rejoue apply() une fois le DOM à jour pour le positionner
+    // immédiatement, sans attendre un premier scroll/mousemove.
+    nextTick(apply)
 
     // Position du verre : suit la souris, avec un léger lissage (quickTo réutilise
     // une seule interpolation par frame, plus performant qu'un tween recréé à chaque event).

@@ -11,6 +11,12 @@ useSeoMeta({
   ogType: 'website'
 })
 
+// Image de partage social de marque (logo + titre) plutôt que le rendu générique par défaut.
+defineOgImage('Home', {
+  title: 'Optique Ogimont',
+  description: 'Opticien indépendant à Baisieux & Willems'
+})
+
 // Données structurées LocalBusiness pour les deux boutiques — améliore le référencement local.
 useSchemaOrg(
   shops.map((shop) =>
@@ -40,6 +46,7 @@ useSchemaOrg(
     <BrandsMarquee />
     <InboSection />
     <ServicesSection />
+    <TestimonialsSection />
     <FaqSection />
     <ContactSection />
   </div>

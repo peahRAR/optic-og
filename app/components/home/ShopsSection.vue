@@ -1,8 +1,40 @@
 <script setup lang="ts">
 import { shops } from '~/data/shops'
 
+const { prefersReducedMotion } = useReducedMotion()
+
 const active = ref(shops[0].id)
 const activeShop = computed(() => shops.find((shop) => shop.id === active.value)!)
+
+// Photo par boutique : re-déclenchée par un clic d'onglet (pas le scroll), donc pas
+// useImageReveal (scroll-only) — un tween direct, léger, à chaque changement d'onglet.
+const photoEl = ref<HTMLElement | null>(null)
+watch(
+  activeShop,
+  () => {
+    if (!import.meta.client || prefersReducedMotion.value) return
+    nextTick(() => {
+      const el = photoEl.value
+      if (!el) return
+      const { $gsap } = useNuxtApp()
+      el.style.filter = 'blur(6px)'
+      el.style.opacity = '0'
+      // État séparé (pas d'auto-référence au tween dans son propre onUpdate — voir
+      // le même commentaire dans useImageReveal.ts pour le pourquoi).
+      const state = { blur: 6 }
+      $gsap.to(el, { opacity: 1, duration: 0.8, ease: 'power2.out' })
+      $gsap.to(state, {
+        blur: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        onUpdate() {
+          el.style.filter = `blur(${state.blur}px)`
+        }
+      })
+    })
+  },
+  { immediate: true }
+)
 
 const tabButtons = ref<HTMLButtonElement[]>([])
 function setTabRef(el: unknown, index: number) {
@@ -84,16 +116,17 @@ function selectByOffset(offset: number) {
         </div>
 
         <div class="overflow-hidden rounded-2xl">
-          <NuxtImg
-            :key="activeShop.id"
-            :src="activeShop.photo"
-            :alt="`Boutique ${activeShop.name} à ${activeShop.city}`"
-            :width="600"
-            :height="450"
-            format="webp"
-            quality="80"
-            class="h-full min-h-[280px] w-full object-cover"
-          />
+          <div :key="activeShop.id" ref="photoEl" class="h-full min-h-[280px] w-full">
+            <NuxtImg
+              :src="activeShop.photo"
+              :alt="`Boutique ${activeShop.name} à ${activeShop.city}`"
+              :width="600"
+              :height="450"
+              format="webp"
+              quality="80"
+              class="photo-grade h-full w-full object-cover"
+            />
+          </div>
         </div>
 
         <div class="overflow-hidden rounded-2xl">
