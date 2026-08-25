@@ -17,7 +17,7 @@ useReveal(stepsRoot, { children: '.reveal-step', stagger: 0.12 })
         {{ secondPairOffer.description }}
       </p>
       <div class="reveal mt-10">
-        <MagneticButton to="#boutiques">En profiter en boutique</MagneticButton>
+        <MagneticButton to="/#boutiques">En profiter en boutique</MagneticButton>
       </div>
     </div>
 

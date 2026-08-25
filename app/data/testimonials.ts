@@ -1,39 +1,35 @@
 export interface Testimonial {
-  author: string
   quote: string
+  date: string
   rating: number
 }
 
 /**
  * ⚠️ DONNÉES STATIQUES, PAS DYNAMIQUES — ce fichier n'interroge aucune API (ni Google, ni
- * autre) et ne se met jamais à jour tout seul. C'est un instantané pris le 26/07/2026 sur
- * l'annuaire opticiensparconviction.fr, qui affiche les avis vérifiés (note + date d'achat)
- * d'Optique Ogimont (Baisieux) :
- * https://www.opticiensparconviction.fr/votre-opticien-a-baisieux/optique-ogimont
- *
- * Sur les 5 avis les plus récents à cette date (tous 5/5), seuls ces 3 comportaient un
- * commentaire écrit — les 2 autres n'avaient qu'une note sans texte, je ne les ai pas
- * inventés. Le format (note + date + "date d'achat") suggère un système d'avis vérifiés
- * propre au réseau d'opticiens, pas forcément Google Avis lui-même.
- *
- * Pour rester à jour, il faut revenir sur cette page de temps en temps et mettre à jour
- * la liste ci-dessous à la main.
+ * autre) et ne se met jamais à jour tout seul. Avis repris mot pour mot depuis des captures
+ * d'avis Google publiées par Zoom Optique Cysoing lui-même sur zoomoptique.com (consultées
+ * le 24/08/2026) — pas d'auteur affiché sur les captures sources, donc pas de nom inventé
+ * ici, seulement la date réelle indiquée par chaque avis.
+ * Pour rester à jour, revenir sur zoomoptique.com (ou directement sur la fiche Google) de
+ * temps en temps et mettre à jour la liste ci-dessous à la main.
  */
 export const testimonials: Testimonial[] = [
   {
-    author: 'Laetitia B.',
     quote:
-      "Une équipe au top, disponible, professionnelle et très agréable ! C'est toujours un vrai plaisir d'entrer dans la boutique, où l'on se sent accueilli de manière totalement personnalisée.",
+      "Super opticien ! J'ai été accompagné de A à Z, de ma recherche de monture (assez précise et exigeante qui plus est !), jusqu'à la réalisation et la sélection des verres, en fonction de mes prises en charge, mes besoins et tout le reste ! Je recommande fortement, l'équipe est sympathique et soucieuse de bien faire, j'y reviendrai sans hésiter.",
+    date: 'Décembre 2024',
     rating: 5
   },
   {
-    author: 'Serge B.',
-    quote: 'Très satisfait de notre accueil.',
+    quote:
+      "Un accueil chaleureux et très sympathique. Le choix est très varié, les conseils de Pascal et de sa femme sont avisés et personnalisés. Une adresse locale, à prix contenus, que je recommande vivement lors de votre recherche de lunettes de vue ou solaires.",
+    date: 'Octobre 2024',
     rating: 5
   },
   {
-    author: 'Regine B.',
-    quote: 'Très bon accueil.',
+    quote:
+      "Une très chouette équipe, vraiment aux petits soins pour ses clients ! Merci pour le dépannage cet été pour monture enfant cassée. Des produits au top de l'innovation : montures souples, de sport, verres Myosmart ou Essilor. Du choix et de précieux conseils.",
+    date: 'Septembre 2024',
     rating: 5
   }
 ]
@@ -41,4 +37,4 @@ export const testimonials: Testimonial[] = [
 // Lien "laisser un avis" : recherche Google Maps (pas besoin de Place ID, fonctionne
 // toujours). Le client arrive sur la fiche de la boutique puis clique sur "Avis".
 export const reviewLink =
-  "https://www.google.com/maps/search/?api=1&query=Optique+Ogimont+32+Avenue+d'Ogimont+Baisieux"
+  'https://www.google.com/maps/search/?api=1&query=Zoom+Optique+Cysoing+100C+rue+de+la+Savonniere+Cysoing'

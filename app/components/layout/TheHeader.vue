@@ -2,6 +2,7 @@
 import { navLinks } from '~/data/nav'
 
 const { prefersReducedMotion } = useReducedMotion()
+const { count: cartCount } = useCart()
 
 const scrolled = ref(false)
 const mobileOpen = ref(false)
@@ -44,13 +45,7 @@ function closeMobile() {
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6">
       <NuxtLink to="/" class="flex items-center" @click="closeMobile">
         <span ref="logoMark" class="inline-block">
-          <NuxtImg
-            src="/img/logo/Logo_Baisieux_2026.png"
-            alt="Optique Ogimont"
-            width="56"
-            height="56"
-            class="h-14 w-14 rounded-xl"
-          />
+          <BrandMark :height="40" />
         </span>
       </NuxtLink>
 
@@ -65,25 +60,45 @@ function closeMobile() {
         </a>
       </nav>
 
-      <div class="hidden md:block">
+      <div class="hidden items-center gap-4 md:flex">
+        <NuxtLink to="/panier" class="relative flex h-10 w-10 items-center justify-center text-anthracite hover:text-terracotta" aria-label="Voir le panier">
+          <Icon name="ph:shopping-bag" size="22" />
+          <span
+            v-if="cartCount > 0"
+            class="absolute -right-0.5 -top-0.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-terracotta px-1 text-[10px] font-medium leading-none text-cream"
+          >
+            {{ cartCount }}
+          </span>
+        </NuxtLink>
         <NuxtLink
-          to="#boutiques"
+          to="/#boutiques"
           class="inline-flex items-center rounded-full bg-anthracite px-5 py-2.5 text-sm text-cream transition-colors duration-300 ease-editorial hover:bg-terracotta"
         >
           Prendre RDV
         </NuxtLink>
       </div>
 
-      <button
-        type="button"
-        class="flex h-10 w-10 items-center justify-center text-anthracite md:hidden"
-        :aria-expanded="mobileOpen"
-        aria-controls="mobile-nav"
-        aria-label="Ouvrir le menu"
-        @click="mobileOpen = !mobileOpen"
-      >
-        <Icon :name="mobileOpen ? 'ph:x' : 'ph:list'" size="24" />
-      </button>
+      <div class="flex items-center gap-1 md:hidden">
+        <NuxtLink to="/panier" class="relative flex h-10 w-10 items-center justify-center text-anthracite" aria-label="Voir le panier">
+          <Icon name="ph:shopping-bag" size="22" />
+          <span
+            v-if="cartCount > 0"
+            class="absolute -right-0.5 -top-0.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-terracotta px-1 text-[10px] font-medium leading-none text-cream"
+          >
+            {{ cartCount }}
+          </span>
+        </NuxtLink>
+        <button
+          type="button"
+          class="flex h-10 w-10 items-center justify-center text-anthracite"
+          :aria-expanded="mobileOpen"
+          aria-controls="mobile-nav"
+          aria-label="Ouvrir le menu"
+          @click="mobileOpen = !mobileOpen"
+        >
+          <Icon :name="mobileOpen ? 'ph:x' : 'ph:list'" size="24" />
+        </button>
+      </div>
     </div>
 
     <Transition
@@ -106,7 +121,7 @@ function closeMobile() {
           </li>
           <li>
             <a
-              href="#boutiques"
+              href="/#boutiques"
               class="inline-flex items-center rounded-full bg-anthracite px-5 py-2.5 text-sm text-cream"
               @click="closeMobile"
             >

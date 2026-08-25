@@ -65,7 +65,7 @@ export function useHeroLens(refs: HeroLensRefs, options: HeroLensOptions = {}) {
     // Important : pas de `await nextTick()` ici. Le pin (ScrollTrigger) doit s'enregistrer
     // de façon SYNCHRONE, dans le même passage que le montage des autres composants plus
     // bas sur la page. Un await aurait retardé sa création après celle de triggers créés
-    // plus tard dans l'arbre (ex: la voiture de HomeVisitSection), et GSAP calcule les
+    // plus tard dans l'arbre (ex: un ScrollTrigger d'une section plus bas), et GSAP calcule les
     // positions de ces triggers suivants EN FONCTION de l'ordre de création des pins — un
     // pin enregistré trop tard fait que les triggers après lui sont mal positionnés (décalage
     // exactement égal à la longueur de scroll du pin, constaté en debug). `clipPath` n'est

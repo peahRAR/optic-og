@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { shops, homeVisit } from '~/data/shops'
+import { shops } from '~/data/shops'
 
 const root = ref<HTMLElement | null>(null)
 useReveal(root, { children: '.reveal' })
@@ -7,7 +7,6 @@ useReveal(root, { children: '.reveal' })
 const subjects = [
   { value: 'rdv', label: 'Prendre rendez-vous' },
   { value: 'lentilles', label: 'Renouvellement de lentilles' },
-  { value: 'domicile', label: 'Optique à domicile' },
   { value: 'autre', label: 'Autre demande' }
 ]
 
@@ -132,8 +131,8 @@ function handleSubmit() {
             <Icon name="ph:check-circle" size="32" class="text-terracotta" />
             <p class="text-lg">Merci, votre message a bien été enregistré.</p>
             <p class="text-sm text-anthracite/70">
-              Nous revenons vers vous rapidement. Pour une urgence, appelez directement l'une de
-              nos boutiques ci-contre.
+              Nous revenons vers vous rapidement. Pour une urgence, appelez-nous directement
+              ci-contre.
             </p>
           </div>
         </div>
@@ -141,6 +140,7 @@ function handleSubmit() {
         <div class="reveal space-y-6">
           <div v-for="shop in shops" :key="shop.id" class="rounded-2xl bg-cream p-6">
             <p class="text-sm uppercase tracking-widest text-anthracite/50">{{ shop.name }} · {{ shop.city }}</p>
+            <address class="mt-3 text-sm not-italic leading-relaxed text-anthracite/70">{{ shop.address }}</address>
             <a :href="`tel:${shop.phoneHref}`" class="mt-3 flex items-center gap-2 text-sm hover:text-terracotta">
               <Icon name="ph:phone" size="16" />
               {{ shop.phone }}
@@ -155,12 +155,16 @@ function handleSubmit() {
             </a>
           </div>
 
-          <div class="rounded-2xl bg-cream p-6">
-            <p class="text-sm uppercase tracking-widest text-anthracite/50">Optique à domicile</p>
-            <a :href="`tel:${homeVisit.phoneHref}`" class="mt-3 flex items-center gap-2 text-sm hover:text-terracotta">
-              <Icon name="ph:phone-call" size="16" />
-              {{ homeVisit.phone }}
-            </a>
+          <div class="overflow-hidden rounded-2xl">
+            <iframe
+              v-for="shop in shops"
+              :key="shop.id"
+              :title="`Carte de ${shop.name}`"
+              class="h-64 w-full border-0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              :src="`https://www.google.com/maps?q=${encodeURIComponent(shop.mapQuery)}&output=embed`"
+            />
           </div>
         </div>
       </div>

@@ -4,10 +4,10 @@ export interface OpeningLine {
 }
 
 export interface Shop {
-  id: 'baisieux' | 'willems'
+  id: 'cysoing'
   name: string
   city: string
-  /** Adresse formatée pour l'affichage (footer, cartes boutique). */
+  /** Adresse formatée pour l'affichage (footer, carte boutique). */
   address: string
   /** Champs structurés pour le schema.org PostalAddress — garder synchronisés avec `address`. */
   streetAddress: string
@@ -17,57 +17,34 @@ export interface Shop {
   email?: string
   hours: OpeningLine[]
   closedDays: string
-  /** URL Google Maps embed — à remplacer par la véritable adresse une fois vérifiée. */
+  /** URL Google Maps embed. */
   mapQuery: string
-  logo: string
-  /** Photo réelle de la boutique (intérieur ou devanture). */
+  /** Photo réelle de la boutique (intérieur). */
   photo: string
 }
 
+// Boutique unique (contrairement au modèle d'origine à 2 boutiques) : Zoom Optique Cysoing
+// n'a qu'un seul point de vente, dans la galerie marchande Intermarché. `shops` reste un
+// tableau (même à 1 élément) pour ne pas casser les composants qui itèrent dessus
+// (ContactSection, TheFooter, le schema.org LocalBusiness dans index.vue).
 export const shops: Shop[] = [
   {
-    id: 'baisieux',
-    name: 'Optique Ogimont',
-    city: 'Baisieux',
-    address: "32 Av. d'Ogimont, 59780 Baisieux",
-    streetAddress: "32 Av. d'Ogimont",
-    postalCode: '59780',
-    phone: '03 20 67 06 48',
-    phoneHref: '0320670648',
+    id: 'cysoing',
+    name: 'Zoom Optique Cysoing',
+    city: 'Cysoing',
+    address: '100C rue de la Savonnière (CC Intermarché), 59830 Cysoing',
+    streetAddress: '100C rue de la Savonnière',
+    postalCode: '59830',
+    phone: '03 20 79 42 96',
+    phoneHref: '0320794296',
+    email: 'contact@zoomoptique.fr',
     hours: [
-      { days: 'Mardi – Vendredi', hours: '9h30–12h30 / 14h30–19h00' },
-      { days: 'Samedi', hours: '9h30–12h30 / 13h30–18h00' }
+      { days: 'Lundi – Jeudi', hours: '9h30–12h30 / 14h30–19h00' },
+      { days: 'Vendredi', hours: '9h30–19h00' },
+      { days: 'Samedi', hours: '9h30–18h00' }
     ],
-    closedDays: 'Dimanche & Lundi : fermé',
-    mapQuery: "32 Av. d'Ogimont, 59780 Baisieux",
-    logo: '/img/logo/Logo_Baisieux_2026.png',
+    closedDays: 'Dimanche : fermé',
+    mapQuery: '100C rue de la Savonnière, 59830 Cysoing',
     photo: '/img/shop/interior-1.jpg'
-  },
-  {
-    id: 'willems',
-    name: 'Optique Willems',
-    city: 'Willems',
-    address: '2 rue Jean Baptiste Lebas, 59780 Willems',
-    streetAddress: '2 rue Jean Baptiste Lebas',
-    postalCode: '59780',
-    phone: '03 74 44 91 76',
-    phoneHref: '0374449176',
-    email: 'optique.willems@free.fr',
-    hours: [
-      { days: 'Mardi – Vendredi', hours: '9h30–12h00 / 14h30–19h00' },
-      { days: 'Samedi', hours: '9h30–12h00 / 13h30–18h00' }
-    ],
-    closedDays: 'Dimanche & Lundi : fermé',
-    mapQuery: '2 rue Jean Baptiste Lebas, 59780 Willems',
-    logo: '/img/logo/Logo_Willems_2026.png',
-    photo: '/img/shop/storefront-willems.jpg'
   }
 ]
-
-export const homeVisit = {
-  title: 'Optique à domicile',
-  description:
-    "Une opticienne diplômée d'État se déplace chez vous, sur secteur, avec un large choix de produits et nos offres commerciales.",
-  phone: '07 49 38 64 02',
-  phoneHref: '0749386402'
-}

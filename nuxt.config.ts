@@ -39,10 +39,10 @@ export default defineNuxtConfig({
 
   // Base @nuxtjs/seo config — remplacer par le vrai domaine avant mise en prod.
   site: {
-    url: 'https://www.optique-ogimont.fr',
-    name: 'Optique Ogimont',
+    url: 'https://www.zoom-optique-cysoing.fr',
+    name: 'Zoom Optique Cysoing',
     description:
-      "Opticien indépendant à Baisieux et Willems : montures, verres, lentilles, optique à domicile. Prenez soin de votre vue avec un accompagnement sur-mesure.",
+      'Opticien indépendant à Cysoing, membre du réseau Zoom Optique : montures, verres, lentilles, 2ᵉ paire à 1€. Prenez soin de votre vue avec un accompagnement sur-mesure.',
     defaultLocale: 'fr'
   }
 })

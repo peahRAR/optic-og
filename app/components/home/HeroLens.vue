@@ -57,7 +57,7 @@ const { showEffect, isSimplified } = useHeroLens(
           preload
           fetchpriority="high"
           class="photo-grade h-full w-full object-cover"
-          style="object-position: 85% 65%"
+          style="object-position: 80% 55%"
         />
         <div
           class="absolute inset-0"
@@ -75,17 +75,17 @@ const { showEffect, isSimplified } = useHeroLens(
 
       <div class="relative mx-auto max-w-6xl px-6">
         <p class="text-sm uppercase tracking-widest text-terracotta">
-          Opticien indépendant · Baisieux &amp; Willems
+          Opticien indépendant · Réseau Zoom Optique · Cysoing
         </p>
         <h1 class="mt-5 max-w-2xl text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
-          La vue est belle,<br />
-          elle mérite un regard <span class="text-terracotta">juste</span>.
+          Bien voir,<br />
+          bien <span class="text-terracotta">accueilli</span>.
         </h1>
         <p class="mt-6 max-w-lg text-lg leading-relaxed text-anthracite/70">
-          Deux boutiques à votre écoute, à Baisieux et à Willems.
+          À Cysoing, à votre écoute depuis 2006.
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-4">
-          <MagneticButton to="#boutiques">Prendre rendez-vous</MagneticButton>
+          <MagneticButton to="/#boutiques">Prendre rendez-vous</MagneticButton>
         </div>
       </div>
     </div>
@@ -107,7 +107,7 @@ const { showEffect, isSimplified } = useHeroLens(
           format="webp"
           quality="80"
           class="photo-grade h-full w-full object-cover"
-          style="object-position: 85% 65%"
+          style="object-position: 80% 55%"
         />
         <div
           class="absolute inset-0"
@@ -125,15 +125,15 @@ const { showEffect, isSimplified } = useHeroLens(
 
       <div class="relative mx-auto max-w-6xl px-6">
         <p class="text-sm uppercase tracking-widest text-terracotta">
-          Opticien indépendant · Baisieux &amp; Willems
+          Opticien indépendant · Réseau Zoom Optique · Cysoing
         </p>
         <!-- div (pas h1) : copie purement décorative, un seul vrai titre de niveau 1 sur la page. -->
         <div class="mt-5 max-w-2xl text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
-          La vue est belle,<br />
-          elle mérite un regard <span class="text-terracotta">juste</span>.
+          Bien voir,<br />
+          bien <span class="text-terracotta">accueilli</span>.
         </div>
         <p class="mt-6 max-w-lg text-lg leading-relaxed text-anthracite/70">
-          Deux boutiques à votre écoute, à Baisieux et à Willems.
+          À Cysoing, à votre écoute depuis 2006.
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-4">
           <span class="inline-flex items-center rounded-full bg-terracotta px-7 py-3.5 text-sm text-cream">

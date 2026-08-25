@@ -10,33 +10,27 @@ export const faq: FaqItem[] = [
       "Oui. La Sécurité sociale est systématiquement appliquée en tiers payant, et nous travaillons avec de nombreuses mutuelles : dans la majorité des cas, vous n'avancez pas les frais couverts par votre contrat."
   },
   {
-    question: 'Quelles sont vos garanties et le SAV ?',
+    question: "En quoi consiste l'offre 2ᵉ paire à 1€ ?",
     answer:
-      "Les montures sont garanties casse pendant 2 ans, sans franchise ni limite de nombre. Les verres sont eux aussi garantis casse sur la même durée (franchise de 50 % remboursable par la Sécu ou votre mutuelle). Et si votre équipement n'est finalement pas adapté, nous le modifions ou l'échangeons sous 1 mois."
+      "Pour l'achat d'une monture optique neuve avec une paire de verres, la 2ᵉ paire est à 1€, même avec des verres progressifs solaires. Monture à choisir parmi une sélection dédiée en magasin."
   },
   {
     question: 'Comment renouveler mes lentilles ?',
     answer:
-      "Simplement : par téléphone, par fax, ou directement depuis la rubrique dédiée de ce site. Pas besoin de repasser en boutique pour un renouvellement classique."
+      "Simplement : par téléphone, ou directement depuis la rubrique dédiée de ce site, à des tarifs compétitifs. Pas besoin de repasser en boutique pour un renouvellement classique."
   },
   {
-    question: "En quoi consiste l'offre 2ᵉ paire à partir de 1€ ?",
+    question: "Êtes-vous un opticien indépendant ou une enseigne ?",
     answer:
-      "Pour l'achat d'une monture optique neuve avec une paire de verres, la 2ᵉ paire est à partir de 1€. Elle est composée de verres blancs ou solaires, non amincis et sans traitement, avec une monture à choisir parmi une sélection dédiée en magasin."
+      "Nous sommes un magasin indépendant, mais nous travaillons regroupés avec plus de 2000 opticiens indépendants du réseau Zoom Optique : cela nous donne une force de vente équivalente aux grandes enseignes (tarifs, offre 2e paire...), tout en gardant notre liberté dans le choix de nos montures, de nos verres et de nos services, avec une ambiance familiale."
   },
   {
-    question: 'Faites-vous du dépistage visuel ?',
+    question: 'Avez-vous un espace dédié aux enfants ?',
     answer:
-      "Oui, un dépistage visuel gratuit est proposé en magasin au réfracteur automatique, sans rendez-vous. C'est un repère utile, qui ne remplace pas un examen ophtalmologique complet."
+      "Oui, nous sommes certifiés Kid Expert : un coin dédié en boutique, une équipe formée à l'accompagnement des plus jeunes et des montures adaptées à chaque âge."
   },
   {
-    question: "Proposez-vous l'optique à domicile ?",
-    answer:
-      "Oui : une opticienne diplômée d'État se déplace chez vous, sur secteur, avec un large choix de produits et nos offres commerciales. Prise de rendez-vous au 07 49 38 64 02."
-  },
-  {
-    question: 'Quelles marques proposez-vous ?',
-    answer:
-      "Notre indépendance nous permet de sélectionner librement les modèles les plus attrayants : Azzaro, Jaguar, Ray-Ban, Morgan, Vicomte Arthur, Nike, Gucci, Chloé, In'Bô, Superdry, Chantal Thomass, Carrera, Osmose, V. Design, et bien d'autres."
+    question: 'Avez-vous un programme de fidélité ?',
+    answer: "Oui, un programme de fidélité et de parrainage, ainsi que des facilités de paiement, sont proposés en boutique."
   }
 ]

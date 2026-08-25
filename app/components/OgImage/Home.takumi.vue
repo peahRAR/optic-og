@@ -2,8 +2,8 @@
 withDefaults(
   defineProps<{ title?: string; description?: string }>(),
   {
-    title: 'Optique Ogimont',
-    description: 'Opticien indépendant à Baisieux & Willems'
+    title: 'Zoom Optique Cysoing',
+    description: 'Opticien indépendant à Cysoing'
   }
 )
 </script>
@@ -20,7 +20,7 @@ withDefaults(
       background-color: #f7f2ec;
     "
   >
-    <img src="/img/logo/Logo_Baisieux_2026.png" width="96" height="96" style="border-radius: 22px" />
+    <img src="/img/logo/logo.png" width="272" height="80" style="object-fit: contain" />
     <div
       style="
         margin-top: 48px;
@@ -36,6 +36,6 @@ withDefaults(
     <div style="margin-top: 24px; max-width: 800px; font-size: 28px; color: #221714b3">
       {{ description }}
     </div>
-    <div style="margin-top: 40px; width: 120px; height: 6px; background-color: #c22c0d; border-radius: 4px" />
+    <div style="margin-top: 40px; width: 120px; height: 6px; background-color: #a21a20; border-radius: 4px" />
   </div>
 </template>

@@ -2,22 +2,22 @@
 import { shops } from '~/data/shops'
 
 useSeoMeta({
-  title: 'Optique Ogimont · Opticien indépendant à Baisieux & Willems',
+  title: 'Zoom Optique Cysoing · Opticien indépendant à Cysoing',
   description:
-    "Montures, verres Essilor & Novacel, lentilles et optique à domicile. Deux boutiques indépendantes à Baisieux et Willems, à votre écoute.",
-  ogTitle: 'Optique Ogimont · Opticien indépendant à Baisieux & Willems',
+    "Montures, verres Essilor, lentilles et 2ᵉ paire à 1€. Opticien indépendant membre du réseau Zoom Optique, à Cysoing (galerie Intermarché).",
+  ogTitle: 'Zoom Optique Cysoing · Opticien indépendant à Cysoing',
   ogDescription:
-    "Montures, verres, lentilles et optique à domicile. Deux boutiques indépendantes, un accompagnement sur-mesure.",
+    'Montures, verres, lentilles. Opticien indépendant membre du réseau Zoom Optique, à votre écoute depuis 2006.',
   ogType: 'website'
 })
 
 // Image de partage social de marque (logo + titre) plutôt que le rendu générique par défaut.
 defineOgImage('Home', {
-  title: 'Optique Ogimont',
-  description: 'Opticien indépendant à Baisieux & Willems'
+  title: 'Zoom Optique Cysoing',
+  description: 'Opticien indépendant à Cysoing'
 })
 
-// Données structurées LocalBusiness pour les deux boutiques — améliore le référencement local.
+// Données structurées LocalBusiness — améliore le référencement local.
 useSchemaOrg(
   shops.map((shop) =>
     defineLocalBusiness({
@@ -41,10 +41,9 @@ useSchemaOrg(
     <ExpertiseSection />
     <TeamSection />
     <ShopsSection />
-    <HomeVisitSection />
     <SecondPairSection />
     <BrandsMarquee />
-    <InboSection />
+    <KidExpertSection />
     <ServicesSection />
     <TestimonialsSection />
     <FaqSection />

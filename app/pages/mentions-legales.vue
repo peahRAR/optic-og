@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Mentions légales · Optique Ogimont',
+  title: 'Mentions légales · Zoom Optique Cysoing',
   robots: 'noindex, follow'
 })
 </script>

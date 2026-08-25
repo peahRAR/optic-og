@@ -5,7 +5,8 @@ export interface NavLink {
 
 /** Ancres de la page unique (one-page) — voir choix d'architecture en tête de projet. */
 export const navLinks: NavLink[] = [
-  { label: 'Nos boutiques', href: '#boutiques' },
-  { label: '2e paire à 1€', href: '#offre' },
-  { label: 'Contact', href: '#contact' }
+  { label: 'La boutique', href: '/#boutiques' },
+  { label: 'Boutique en ligne', href: '/boutique' },
+  { label: '2e paire à 1€', href: '/#offre' },
+  { label: 'Contact', href: '/#contact' }
 ]

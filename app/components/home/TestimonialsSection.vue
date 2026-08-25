@@ -9,14 +9,14 @@ useReveal(root, { children: '.reveal-card', stagger: 0.12 })
   <section id="avis" class="bg-sand/40 py-28">
     <div class="mx-auto max-w-6xl px-6">
       <SectionHeading eyebrow="Avis clients" title="Ce qu'en disent nos clients" align="center">
-        Des avis réels, laissés par nos clients à Baisieux.
+        Des avis Google réels, laissés par nos clients à Cysoing.
       </SectionHeading>
 
       <div ref="root" class="mt-14">
         <div class="grid gap-8 sm:grid-cols-3">
           <figure
             v-for="testimonial in testimonials"
-            :key="testimonial.author"
+            :key="testimonial.date"
             class="reveal-card flex flex-col rounded-2xl border border-anthracite/10 bg-cream p-8"
           >
             <div class="flex gap-0.5 text-terracotta" aria-hidden="true">
@@ -25,7 +25,7 @@ useReveal(root, { children: '.reveal-card', stagger: 0.12 })
             <blockquote class="mt-5 flex-1 font-serif text-lg leading-snug text-anthracite">
               « {{ testimonial.quote }} »
             </blockquote>
-            <figcaption class="mt-6 text-sm text-anthracite/60">{{ testimonial.author }}</figcaption>
+            <figcaption class="mt-6 text-sm text-anthracite/60">Avis Google · {{ testimonial.date }}</figcaption>
           </figure>
         </div>
 

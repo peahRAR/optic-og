@@ -9,17 +9,18 @@ export default <Partial<Config>>{
   ],
   theme: {
     extend: {
-      // Palette recalée sur les logos Optique Ogimont / Optique Willems
-      // (badge dégradé rouge-orange #F53C18 → maroon #4C1217, spirale orange vive #FF5C0B).
+      // Palette recalée sur l'identité Zoom Optique Cysoing (échantillonnée sur leur
+      // logo réel : "ZOOM" gris charbon #4E4C4D, doubles-O rouge vif #FC0203, titre du
+      // site en rouge sombre #A21A20 — déjà AA/AAA sur cream, gardé tel quel pour le texte).
       colors: {
         cream: '#F7F2EC',
         sand: '#EAE1D2',
         anthracite: '#221714',
         terracotta: {
-          DEFAULT: '#C22C0D', // recalé pour un contraste AA (5.15:1) sur cream — le rouge brut du logo (#F53C18) est trop clair pour du texte
-          dark: '#9C260C'
+          DEFAULT: '#A21A20', // contraste ~8:1 sur cream, repris directement de leur rouge de titre
+          dark: '#7C1418'
         },
-        flame: '#FF5C0B' // orange vif du logo — décoratif uniquement (gradients, 3D, glows), jamais pour du texte
+        flame: '#FC0203' // rouge vif du logo — décoratif uniquement (gradients, glows), jamais pour du texte
       },
       fontFamily: {
         serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
