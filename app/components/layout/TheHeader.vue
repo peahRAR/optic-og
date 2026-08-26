@@ -43,11 +43,17 @@ function closeMobile() {
     :class="scrolled ? 'bg-cream/90 backdrop-blur-md shadow-[0_1px_0_0_rgba(33,31,27,0.08)] py-3' : 'bg-transparent py-6'"
   >
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6">
-      <NuxtLink to="/" class="flex items-center" @click="closeMobile">
-        <span ref="logoMark" class="inline-block">
-          <BrandMark :height="40" />
+      <div class="flex items-center gap-3">
+        <NuxtLink to="/" class="flex items-center" @click="closeMobile">
+          <span ref="logoMark" class="inline-block">
+            <BrandMark :height="40" />
+          </span>
+        </NuxtLink>
+        <span class="hidden items-center gap-1.5 whitespace-nowrap border-l border-anthracite/15 pl-3 text-xs text-anthracite/40 xl:flex">
+          <Icon name="ph:sparkle" size="12" />
+          Propulsé parmi les étoiles par Astrocom
         </span>
-      </NuxtLink>
+      </div>
 
       <nav class="hidden items-center gap-9 md:flex" aria-label="Navigation principale">
         <a
