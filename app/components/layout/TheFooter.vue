@@ -48,7 +48,13 @@ const socials = [
       </div>
 
       <div class="mt-14 flex flex-col gap-3 border-t border-cream/10 pt-6 text-xs text-cream/50 sm:flex-row sm:items-center sm:justify-between">
-        <p>© {{ year }} Zoom Optique Cysoing. Tous droits réservés.</p>
+        <div class="space-y-1.5">
+          <p>© {{ year }} Zoom Optique Cysoing. Tous droits réservés.</p>
+          <p class="flex items-center gap-1.5">
+            <Icon name="ph:sparkle" size="12" />
+            Propulsé parmi les étoiles par Astrocom
+          </p>
+        </div>
         <NuxtLink to="/mentions-legales" class="hover:text-cream">Mentions légales</NuxtLink>
       </div>
     </div>
